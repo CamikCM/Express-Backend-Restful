@@ -1,13 +1,7 @@
 const express = require('express');
+const router =  require('express');
 const {faker} = require('@faker-js/faker');
-const app = express();
-const port = 3001;
-
-app.get('/', (req, res) => {
-    res.send ('<h1>Hello World, I feel 😁!</h1>');
-});
-
-
+const e = require('express');
 
  app.get('/clientes', (req, res) => {
     const {limit, offset} = req.query;
@@ -18,8 +12,3 @@ app.get('/', (req, res) => {
     }
 
 })
-
-
-app.listen(port, () => {
-    console.log("Servidor is running on port " + port);
-});
