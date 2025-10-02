@@ -1,9 +1,7 @@
 const express = require('express');
-const router =  require('express');
 const {faker} = require('@faker-js/faker');
-const e = require('express');
-
 const router = express.Router();
+const e = require('express');
 
 router.get('/', (req, res) => {
     const size = req.query.size || 10;
@@ -13,6 +11,7 @@ router.get('/', (req, res) => {
         productos.push({
             name: faker.commerce.productName(),
             price: faker.commerce.price(),
+
         });
     }
     res.json(productos);
@@ -39,7 +38,11 @@ router.delete('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-    res.send ('metodo creado con post');
+    const body = req.body;
+    res.json ({
+        message: 'Producto creado con éxito',
+        data: body
+    });
 });
 
 
