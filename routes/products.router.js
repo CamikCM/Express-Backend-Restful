@@ -19,6 +19,12 @@ router.get('/', (req, res) => {
 
 router.get('/:id', (req, res) => {
     const {id} = req.params;
+    const limite = 20;
+    if (id > limite) {
+        res.status(404).json({
+            message: 'Producto no encontrado'
+        });
+    } else
     res.send ([{
         id,
         name: 'producto 1',
@@ -34,12 +40,12 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  res.send(`Producto con ID  eliminado con éxito`);
+  res.send(`Producto con ID ` + id + ` eliminado con éxito ` );
 });
 
 router.post('/', (req, res) => {
     const body = req.body;
-    res.json ({
+    res.status(201).json ({
         message: 'Producto creado con éxito',
         data: body
     });
